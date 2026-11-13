@@ -700,6 +700,21 @@ html:has(body.compact-site){scroll-behavior:auto!important}
 .compact-site .portfolio-preview:not([open]) .portfolio-copy small{display:none}
 .compact-site .portfolio-preview:not([open]) .portfolio-copy{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;width:100%}
 
+/* Unslop readability pass 2026-11-14: quiet hierarchy, legible secondary content. */
+.compact-site .compact-hero h1{font-weight:600;letter-spacing:-.035em}
+.compact-site .compact-format-card h3{font-weight:600}
+.compact-site .compact-format-card button{font-weight:600}
+.compact-site .portfolio-copy strong{font-weight:600}
+.compact-brief .field-description,.compact-brief .output-card-copy small{font-size:12px;line-height:1.5}
+.compact-brief .privacy-note,.compact-brief .inline-disclaimer{font-size:12px;line-height:1.55}
+.compact-site .portfolio-copy small{font-size:12px;line-height:1.5}
+.compact-brief .optional-details summary span{font-size:12px}
+@media(max-width:720px){
+ .compact-site .portfolio-copy small{font-size:12px}
+ .compact-brief .output-card-copy small{font-size:12px}
+ .compact-brief .optional-details summary span{font-size:12px}
+}
+
 /* Public static version controls */
 .mobile-fixed-cta{display:none}
 .success-view .button{margin:5px;min-width:185px}
