@@ -145,11 +145,12 @@ function makeBrief(data) {
   ];
   return rows.join("\n");
 }
+// Long briefs must never be silently truncated. Use manual copy when the
+// encoded Telegram URL could exceed practical mobile browser limits.
+const TELEGRAM_URL_MAX = 4000;
 function chatUrl(message) {
-  // Keep within robust URL-size bounds. The full brief is available to copy.
-  let short = message;
-  if (short.length > 1300) short = short.slice(0, 1240) + "\n\n[Продолжение деталей отправлю следующим сообщением]";
-  return "https://t.me/" + RECIPIENT + "?text=" + encodeURIComponent(short);
+  const url = "https://t.me/" + RECIPIENT + "?text=" + encodeURIComponent(message);
+  return url.length <= TELEGRAM_URL_MAX ? url : null;
 }
 form.addEventListener("submit", event => {
   event.preventDefault();
@@ -160,14 +161,24 @@ form.addEventListener("submit", event => {
   lastBrief = makeBrief(data);
   const url = chatUrl(lastBrief);
   const link = $("telegram-send");
-  link.href = url;
+  const feedback = $("copy-feedback");
+  feedback.replaceChildren();
+  if (url) {
+    link.href = url;
+    link.textContent = "Открыть Telegram с брифом →";
+    feedback.textContent = "Проверьте текст в Telegram и нажмите «Отправить».";
+  } else {
+    // A long URL is unreliable on mobile. Preserve the complete brief.
+    link.href = "https://t.me/" + RECIPIENT;
+    link.textContent = "Открыть чат в Telegram →";
+    feedback.textContent = "Бриф слишком длинный для ссылки. Сначала нажмите «Скопировать бриф», затем откройте чат и вставьте текст целиком. Ничего не сокращено.";
+  }
   stages.forEach(s => s.hidden = true);
   $("form-actions").hidden = true;
   $("success").hidden = false;
   $("success").scrollIntoView({behavior:"smooth",block:"center"});
-  // User must explicitly send the prefilled message in Telegram.
-  const external = window.open(url, "_blank", "noopener,noreferrer");
-  // If a popup is blocked, the visible anchor above is the fallback.
+  // Explicit user click is required. Do not trigger a popup on submission:
+  // mobile browsers can block it and users may lose their completed form.
 });
 $("copy-brief").addEventListener("click", async () => {
   const feedback = $("copy-feedback");
