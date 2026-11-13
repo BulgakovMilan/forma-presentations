@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://bulgakovmilan.github.io/forma-presentations/sitemap.xml

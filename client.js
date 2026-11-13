@@ -52,7 +52,7 @@ function displayStage(next, focus = true){
   hideError();
   if(step === 2) buildReview();
   const section = $("brief");
-  section.scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+  section.scrollIntoView({behavior:"instant", block:"start"});
   if(focus) {
     const first = stages[step].querySelector("input:not([type=radio]):not([type=checkbox]), select, textarea");
     if(first) first.focus({preventScroll:true});
@@ -107,7 +107,7 @@ function defaultDate(){
   return [y,m,d].join("-");
 }
 $("deadline").min = defaultDate();
-$("deadline").value = defaultDate();
+$("deadline").value = "";
 form.addEventListener("input",currentSummary);
 form.addEventListener("change",currentSummary);
 for(const btn of document.querySelectorAll("[data-choose-output]")){
@@ -140,7 +140,7 @@ function makeBrief(data) {
     "Стиль: " + (label.style[data.style] || data.style),
     "Слайдов: " + (data.slides || "—"),
     "Соотношение сторон: " + (data.ratio || "16:9"),
-    "Желаемый срок: " + (data.deadline || "уточняется"),
+    "Желаемый срок: " + (data.deadline || "по согласованию"),
     "Материалы: " + (label.materials[data.materials] || "уточнить"),
     "Нужен PDF: " + (data.delivery === "pptx_pdf" ? "Да" : "Нет"),
     "Заметки для выступления: " + yes,
@@ -210,11 +210,10 @@ if (sticky && briefSection && "IntersectionObserver" in window) {
   observer.observe(briefSection);
 }
 $("again").addEventListener("click",()=>{
-  form.reset();
-  $("deadline").value = defaultDate();
+  // Reopen the completed brief without erasing client input.
   $("success").hidden = true;
   $("form-actions").hidden = false;
   currentSummary();
-  displayStage(0);
+  displayStage(2);
 });
 currentSummary();

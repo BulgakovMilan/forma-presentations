@@ -6,6 +6,22 @@
   <meta name="theme-color" content="#f8f9f6">
   <meta name="description" content="Заказать презентацию PowerPoint: визуальную или редактируемую. Выберите формат, заполните короткий бриф и обсудите сроки.">
   <title>FORMA — презентации на заказ</title>
+  <link rel="canonical" href="https://bulgakovmilan.github.io/forma-presentations/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="FORMA">
+  <meta property="og:title" content="FORMA — презентации на заказ">
+  <meta property="og:description" content="Редактируемые и визуальные презентации. Короткий бриф и обсуждение заказа в Telegram.">
+  <meta property="og:url" content="https://bulgakovmilan.github.io/forma-presentations/">
+  <meta property="og:image" content="https://bulgakovmilan.github.io/forma-presentations/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FORMA — презентации на заказ: пример учебной работы">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FORMA — презентации на заказ">
+  <meta name="twitter:description" content="Визуальные и редактируемые PPTX. Заполните краткий бриф.">
+  <meta name="twitter:image" content="https://bulgakovmilan.github.io/forma-presentations/social-preview.jpg">
   <link rel="stylesheet" href="./style.css">
   <script src="./client.js" defer></script>
 </head>
@@ -25,7 +41,7 @@
     <section class="compact-hero container">
       <div><div class="compact-eyebrow">PowerPoint · PPTX · оформление и содержание</div>
       <h1>Презентации на заказ</h1>
-      <p>Для учёбы, работы и выступлений. Помогу подобрать формат, структуру и стиль. Стоимость и срок обсудим по вашему брифу.</p></div>
+      <p>Учебные, научные и деловые презентации в PowerPoint. Выберите формат и опишите задачу — стоимость и срок обсудим до начала работы.</p></div>
       <a class="button button-primary" href="#brief">Заполнить бриф <span aria-hidden="true">→</span></a>
     </section>
     <section class="compact-formats container" id="formats" aria-labelledby="formats-heading">
@@ -46,6 +62,18 @@
         <div class="compact-more-content"><p>В обоих вариантах можно переставлять и удалять целые слайды. В визуальном варианте отдельные буквы, числа и иллюстрации внутри картинки не редактируются без переработки. В редактируемом варианте текст, фигуры и основные диаграммы могут оставаться самостоятельными объектами; сложные эффекты и фотографии могут быть изображениями.</p>
         <p>Можно заказать обе версии, но это дополнительный объём работы: внешний вид, стоимость и состав файлов обсуждаются отдельно. Не всякий эффект можно перенести в полностью редактируемую форму один в один.</p>
         <button class="compact-inline-link" type="button" data-choose-output="both">Обсудить оба варианта →</button></div>
+      </details>
+      <details class="portfolio-preview" id="portfolio">
+        <summary class="portfolio-summary">
+          <img src="./portfolio-cover.webp" alt="Титульный слайд учебной презентации об адаптации и утомлении" width="1280" height="720" loading="lazy" decoding="async">
+          <span class="portfolio-copy"><strong>Пример редактируемого PPTX</strong>
+          <small>Физиология человека · 5 слайдов · учебный демонстрационный проект, не заказ клиента.</small>
+          <span class="portfolio-open">Посмотреть ещё слайд <span aria-hidden="true">↗</span></span></span>
+        </summary>
+        <div class="portfolio-extra">
+          <img src="./portfolio-chart.webp" width="1280" height="720" loading="lazy" decoding="async" alt="График нагрузки и восстановления, оформленный отдельными элементами PowerPoint">
+          <p>Пример показывает один из возможных стилей. В исходном PowerPoint текст и фигуры выполнены отдельными объектами. Для других тем и визуального формата дизайн подбирается индивидуально.</p>
+        </div>
       </details>
     </section>
     <section class="brief-section compact-brief" id="brief" aria-labelledby="brief-heading">
@@ -68,21 +96,21 @@
               <label class="style-tile"><input type="radio" name="style" value="bold"><span class="swatch s-bold"><i>◎</i></span><span>Яркий</span></label>
               <label class="style-tile"><input type="radio" name="style" value="custom"><span class="swatch s-custom"><i>✳</i></span><span>По референсу</span></label>
             </div></div>
-            <div class="field field-columns"><div><label for="slides">Сколько слайдов? <span class="required">*</span></label><input id="slides" name="slides" type="number" min="1" max="150" value="10" required inputmode="numeric"></div><div><label for="deadline">Желаемая дата <span class="required">*</span></label><input id="deadline" name="deadline" type="date" required></div></div>
-            <div class="field"><label for="ratio">Соотношение сторон</label><select name="ratio" id="ratio"><option value="16:9">16:9 — современный широкий экран</option><option value="4:3">4:3 — классический формат</option><option value="portrait">Вертикальное — под телефон / публикацию</option></select></div>
-            <p class="inline-disclaimer">Дата в брифе — пожелание, не подтверждённый дедлайн. Возможность выполнения согласуем отдельно.</p>
+            <div class="field field-columns"><div><label for="slides">Сколько слайдов? <span class="required">*</span></label><input id="slides" name="slides" type="number" min="1" max="150" value="10" required inputmode="numeric"></div><div><label for="deadline">Желаемая дата (если известна)</label><input id="deadline" name="deadline" type="date"></div></div>
+            <details class="optional-details"><summary>Другой формат экрана? <span>По умолчанию 16:9</span></summary><div class="optional-content"><div class="field"><label for="ratio">Соотношение сторон</label><select name="ratio" id="ratio"><option value="16:9">16:9 — современный широкий экран</option><option value="4:3">4:3 — классический формат</option><option value="portrait">Вертикальное — под телефон / публикацию</option></select></div></div></details>
+            <p class="inline-disclaimer">Срок можно оставить пустым. Дату и возможность выполнения уточним при обсуждении.</p>
           </fieldset>
           <fieldset class="form-stage" data-stage="1" hidden><legend><span class="legend-number">02</span> Содержание и материалы</legend><p class="stage-lead">Чем точнее задача, тем легче подобрать оформление и оценить объём работы.</p>
             <div class="field"><label for="topic">Тема презентации <span class="required">*</span></label><input id="topic" name="topic" maxlength="180" required placeholder="Например: адаптация организма к нагрузке"></div>
-            <div class="field field-columns"><div><label for="audience">Кто будет смотреть?</label><input id="audience" name="audience" maxlength="160" placeholder="Студенты, преподаватель, коллеги…"></div><div><label for="purpose">Какой результат нужен?</label><input id="purpose" name="purpose" maxlength="200" placeholder="Объяснить тему, убедить, защитить…"></div></div>
-            <div class="field"><label for="materials">Что уже готово?</label><select id="materials" name="materials"><option value="ready">Есть весь текст и материалы</option><option value="partial" selected>Есть часть материалов, нужна помощь со структурой</option><option value="from_scratch">Есть только тема, нужно обсудить подготовку содержания</option></select><p class="field-description">Подготовка текста и исследование — отдельный объём работы.</p></div>
+            <div class="field"><label for="materials">Что уже готово?</label><select id="materials" name="materials"><option value="ready">Всё готово: текст и материалы</option><option value="partial" selected>Есть часть материалов</option><option value="from_scratch">Есть только тема</option></select><p class="field-description">Подготовка текста и исследование — отдельный объём работы.</p></div>
             <div class="field"><label for="notes">Пожелания и особенности</label><textarea id="notes" name="notes" rows="5" maxlength="2400" placeholder="Структура, обязательные графики и формулы, фирменные цвета, особенности выступления, ограничения…"></textarea></div>
+            <details class="optional-details"><summary>Дополнительные пожелания <span>Бюджет, PDF, ссылки, аудитория</span></summary><div class="optional-content"><div class="field field-columns"><div><label for="audience">Кто будет смотреть?</label><input id="audience" name="audience" maxlength="160" placeholder="Студенты, преподаватель, коллеги…"></div><div><label for="purpose">Какой результат нужен?</label><input id="purpose" name="purpose" maxlength="200" placeholder="Объяснить тему, убедить, защитить…"></div></div>
             <div class="field"><label for="references">Материалы и примеры дизайна</label><textarea id="references" name="references" rows="3" maxlength="1200" placeholder="Вставьте ссылки на папку с материалами, референсы, сайт или документ"></textarea><p class="field-description">Прикрепление файлов пока не подключено. Пожалуйста, не присылайте секретные материалы через общедоступные ссылки.</p></div>
             <div class="field field-columns"><div><label for="budget">Ориентир по бюджету</label><input id="budget" name="budget" maxlength="80" placeholder="Например, до 5000 ₽ или обсудим"></div><div><label for="delivery">Дополнительный файл</label><select id="delivery" name="delivery"><option value="pptx">Достаточно PowerPoint (.pptx)</option><option value="pptx_pdf">PowerPoint + PDF</option></select></div></div>
             <label class="toggle-option"><input type="checkbox" name="speaker_notes" id="speaker_notes"><span><strong>Нужны заметки для выступления</strong><small>Тезисы или текст для докладчика — обсудим отдельно.</small></span></label>
-          </fieldset>
+          </div></details></fieldset>
           <fieldset class="form-stage" data-stage="2" hidden><legend><span class="legend-number">03</span> Контакт и проверка</legend><p class="stage-lead">Проверим детали и оставим способ связи, чтобы можно было обсудить проект.</p>
-            <div class="field field-columns"><div><label for="name">Как к вам обращаться? <span class="required">*</span></label><input id="name" name="name" maxlength="100" autocomplete="name" required placeholder="Имя"></div><div><label for="contact">Telegram или email <span class="required">*</span></label><input id="contact" name="contact" maxlength="160" required placeholder="@username или name@example.com" autocomplete="email"></div></div>
+            <div class="field field-columns"><div><label for="name">Как к вам обращаться? <span class="required">*</span></label><input id="name" name="name" maxlength="100" autocomplete="name" required placeholder="Имя"></div><div><label for="contact">Telegram или email <span class="required">*</span></label><input id="contact" name="contact" maxlength="160" required placeholder="@username или email" autocomplete="off" autocapitalize="off" spellcheck="false"></div></div>
             <div class="review-block"><div class="review-head"><h3>Ваш бриф</h3><span>ПЕРЕД ОТПРАВКОЙ</span></div><dl id="review"></dl></div>
             <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>Я понимаю, что мой бриф откроется в Telegram и данные будут отправлены только после того, как я отправлю сообщение. <span class="required">*</span></span></label>
             <p class="privacy-note">Данные не сохраняются на сайте. После заполнения открывается Telegram с черновиком сообщения. Исполнитель увидит заявку только после вашего нажатия «Отправить» в Telegram.</p>
@@ -117,11 +145,14 @@
     </details></section>
     <section class="compact-footer-note container"><p>Заявка — запрос на обсуждение, а не подтверждённая покупка. Цена, сроки, правки, исходники и передача файлов согласуются отдельно.</p><p>Сайт формирует черновик для Telegram; нажмите «Отправить» в мессенджере.</p></section>
   <section id="privacy" class="public-privacy container">
-  <h2>Как передаётся заявка</h2>
-  <p>Заявка не сохраняется на сайте. Информация формируется в браузере и попадает в Telegram только если вы отправите подготовленное сообщение. Telegram — сторонний сервис; перед отправкой учитывайте его условия. Не включайте в заявку пароли, паспортные данные, медицинские документы и конфиденциальную информацию. Для изменения или удаления информации из переписки обратитесь в чат к исполнителю.</p>
-  <p>Отправка заявки не означает оплату или подтверждение заказа: стоимость, сроки, число правок и состав файлов согласуются в переписке. Загрузка файлов на этом сайте не предусмотрена.</p>
+<details class="compact-more">
+  <summary>Как передаются данные и что происходит после отправки?</summary>
+  <div class="compact-more-content">
+    <p>Заявка не сохраняется на сайте. Информация формируется в браузере и попадает в Telegram только если вы отправите подготовленное сообщение. Telegram — сторонний сервис; перед отправкой учитывайте его условия. Не включайте в заявку пароли, паспортные данные, медицинские документы и конфиденциальную информацию. Для изменения или удаления информации из переписки обратитесь в чат к исполнителю.</p>
+    <p>Отправка заявки не означает оплату или подтверждение заказа: стоимость, сроки, число правок и состав файлов согласуются в переписке. Загрузка файлов на этом сайте не предусмотрена.</p>
+  </div>
+</details>
 </section>
-<a class="mobile-fixed-cta" href="#brief">Заполнить бриф <span>→</span></a>
 </main>
 </body>
 </html>

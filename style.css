@@ -612,6 +612,87 @@ body.compact-site{background:#fafbf8;color:#26342b;overflow-x:clip;font-size:14p
 .compact-faq-main .faq-list{padding:0 16px 12px;border-top:1px solid #dce5d9}
 .compact-faq-main .faq-list details:last-child{border-bottom:0}
 
+
+/* FORMA v0.4: compact optional fields, verified sample and readable touch targets */
+.compact-site .portfolio-preview{border:1px solid #e0e7de;background:#fff;border-radius:9px;margin:11px 0 0;overflow:hidden}
+.compact-site .portfolio-summary{display:flex;align-items:center;gap:16px;cursor:pointer;list-style:none;padding:10px 13px}
+.compact-site .portfolio-summary::-webkit-details-marker{display:none}
+.compact-site .portfolio-summary>img{width:172px;aspect-ratio:16/9;height:auto;object-fit:cover;flex-shrink:0;border-radius:5px;border:1px solid #e3ebe5}
+.compact-site .portfolio-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.compact-site .portfolio-copy strong{font-size:13px;font-weight:760;color:#293b30}
+.compact-site .portfolio-copy small{font-size:11px;line-height:1.5;color:#607362}
+.compact-site .portfolio-open{font-size:11px;font-weight:720;color:#376146;margin-top:2px}
+.compact-site .portfolio-extra{border-top:1px solid #e6ede4;padding:13px;display:flex;align-items:center;gap:17px}
+.compact-site .portfolio-extra>img{width:min(46%,320px);height:auto;aspect-ratio:16/9;border:1px solid #e3ebe5;border-radius:5px}
+.compact-site .portfolio-extra p{font-size:12px;line-height:1.6;color:#667669;margin:0}
+.compact-brief .optional-details{border:1px solid #dde5da;border-radius:7px;margin:12px 0 19px;background:#f7f9f5}
+.compact-brief .optional-details summary{cursor:pointer;padding:12px 13px;font-size:12px;line-height:1.4;font-weight:720;color:#33543a;list-style:none}
+.compact-brief .optional-details summary::-webkit-details-marker{display:none}
+.compact-brief .optional-details summary:before{content:"+";font-size:16px;font-weight:500;margin-right:9px}
+.compact-brief .optional-details[open] summary:before{content:"−"}
+.compact-brief .optional-details summary span{font-weight:450;color:#6e7d70;margin-left:6px}
+.compact-brief .optional-content{padding:13px;border-top:1px solid #dde5da}
+.compact-brief .optional-content>.field:last-of-type{margin-bottom:10px}
+.compact-site .field input[aria-invalid="true"],.compact-site .field textarea[aria-invalid="true"]{border-color:#b94831!important;background:#fff8f5!important}
+.compact-site .compact-format-card button{min-height:35px;padding:5px 0}
+.compact-site .portfolio-summary:focus-visible{outline:3px solid #5164dc;outline-offset:-3px}
+@media(max-width:720px){
+ .compact-site .compact-format-card p{font-size:12.5px;line-height:1.55}
+ .compact-site .compact-format-card button{font-size:13px;min-height:38px}
+ .compact-site .compact-format-top h3{font-size:16px}
+ .compact-site .compact-hero p{font-size:13px}
+ .compact-brief .field>label,.compact-brief .field-label,.compact-brief .field-columns>div>label{font-size:13px}
+ .compact-brief .output-card-copy strong{font-size:13px}
+ .compact-brief .output-card-copy small{font-size:11.5px}
+ .compact-brief .style-tile{font-size:11px}
+ .compact-brief .optional-details summary span{font-size:11px}
+ .compact-site .portfolio-summary{gap:11px;padding:9px}
+ .compact-site .portfolio-summary>img{width:120px}
+ .compact-site .portfolio-copy strong{font-size:12px}
+ .compact-site .portfolio-copy small{font-size:10.5px}
+ .compact-site .portfolio-extra{display:block}
+ .compact-site .portfolio-extra>img{width:100%;max-width:420px}
+ .compact-site .portfolio-extra p{font-size:11.5px;margin-top:8px}
+}
+@media(max-width:360px){
+ .compact-site .portfolio-summary>img{width:108px}
+ .compact-site .portfolio-copy small{font-size:10px}
+}
+
+
+/* WCAG AA: secondary labels must remain legible on pale backgrounds. */
+.compact-site .identity-sub {color:#4f6252}
+.compact-site .compact-eyebrow {color:#506951}
+.compact-site .compact-section-heading>span,
+.compact-site .brief-heading p {color:#526553}
+.compact-site .compact-format-top span {color:#506650}
+.compact-site .portfolio-copy small {color:#4e6250}
+.compact-site .compact-more summary,
+.compact-site .optional-details summary span {color:#3d5d44}
+.compact-site .compact-footer-note p,
+.compact-site .privacy-note,
+.compact-site .inline-disclaimer {color:#546a56}
+
+
+/* Additional contrast corrections verified by automated WCAG AA audits. */
+.compact-site #stage-number{color:#a7462d}
+.compact-brief .stage-lead{color:#516551}
+.compact-brief .output-card-copy small{color:#526454}
+.compact-brief .field-description{color:#506552}
+.compact-brief .review-head>span{color:#49644f}
+.compact-brief .review-block dt{color:#506550}
+
+
+/* Contact fields must not be cramped on phones. */
+@media(max-width:720px){
+ .compact-brief [data-stage="2"] .field-columns{grid-template-columns:minmax(0,1fr)}
+ .compact-brief [data-stage="2"] #contact{font-size:16px}
+}
+
+
+/* Interactive form: never animate document scroll while buttons are being clicked. */
+html:has(body.compact-site){scroll-behavior:auto!important}
+
 /* Public static version controls */
 .mobile-fixed-cta{display:none}
 .success-view .button{margin:5px;min-width:185px}
