@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f6">
+  <meta name="description" content="Заказать презентацию PowerPoint: визуальную или редактируемую. Выберите формат, заполните короткий бриф и обсудите сроки.">
+  <title>FORMA — презентации на заказ</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./client.js" defer></script>
+</head>
+<body class="compact-site">
+  <header class="compact-header">
+    <div class="container compact-header-inner">
+      <a class="identity" href="./" aria-label="FORMA — главная"><span class="identity-symbol">F<span class="symbol-dot"></span></span><span class="identity-name">FORMA<span class="identity-sub">ПРЕЗЕНТАЦИИ</span></span></a>
+      <nav aria-label="Разделы сайта">
+        <a href="#formats">Форматы</a>
+        <a href="#questions">Вопросы</a>
+        <a class="compact-order-link" href="#brief">Оставить заявку</a>
+      </nav>
+      
+    </div>
+  </header>
+  <main>
+    <section class="compact-hero container">
+      <div><div class="compact-eyebrow">PowerPoint · PPTX · оформление и содержание</div>
+      <h1>Презентации на заказ</h1>
+      <p>Для учёбы, работы и выступлений. Помогу подобрать формат, структуру и стиль. Стоимость и срок обсудим по вашему брифу.</p></div>
+      <a class="button button-primary" href="#brief">Заполнить бриф <span aria-hidden="true">→</span></a>
+    </section>
+    <section class="compact-formats container" id="formats" aria-labelledby="formats-heading">
+      <div class="compact-section-heading"><h2 id="formats-heading">Выберите формат</h2><span>Оба варианта — PowerPoint (.pptx)</span></div>
+      <div class="compact-format-grid">
+        <article class="compact-format-card">
+          <div class="compact-format-top"><h3>Визуальная</h3><span>Для эффектной подачи</span></div>
+          <p>Сложные композиции и графика. <strong>Может выглядеть эффектнее,</strong> но текст внутри слайда-картинки отдельно не изменить.</p>
+          <button type="button" data-choose-output="visual">Выбрать <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="compact-format-card">
+          <div class="compact-format-top"><h3>Редактируемая</h3><span>Для частых правок</span></div>
+          <p>Текст и основные объекты можно менять в PowerPoint. Дизайн тоже может быть красивым; часть графики останется изображениями.</p>
+          <button type="button" data-choose-output="editable">Выбрать <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+      <details class="compact-more"><summary>Что именно можно редактировать? А если нужны оба формата?</summary>
+        <div class="compact-more-content"><p>В обоих вариантах можно переставлять и удалять целые слайды. В визуальном варианте отдельные буквы, числа и иллюстрации внутри картинки не редактируются без переработки. В редактируемом варианте текст, фигуры и основные диаграммы могут оставаться самостоятельными объектами; сложные эффекты и фотографии могут быть изображениями.</p>
+        <p>Можно заказать обе версии, но это дополнительный объём работы: внешний вид, стоимость и состав файлов обсуждаются отдельно. Не всякий эффект можно перенести в полностью редактируемую форму один в один.</p>
+        <button class="compact-inline-link" type="button" data-choose-output="both">Обсудить оба варианта →</button></div>
+      </details>
+    </section>
+    <section class="brief-section compact-brief" id="brief" aria-labelledby="brief-heading">
+      <div class="container">
+        <div class="compact-section-heading brief-heading"><div><h2 id="brief-heading">Короткий бриф</h2><p>3 шага. Отправка заявки бесплатная и ни к чему не обязывает.</p></div><div class="step-display"><span>Шаг <strong id="stage-number">01</strong> из 03</span><div class="step-track"><i id="stage-progress"></i></div></div></div>
+        <div class="brief-layout">
+          <form id="order-form" novalidate aria-label="Бриф на презентацию">
+          <fieldset class="form-stage" data-stage="0"><legend><span class="legend-number">01</span> Формат и оформление</legend><p class="stage-lead">Сначала определим, как презентация должна выглядеть и насколько гибкой быть в работе.</p>
+            <div class="field"><label for="kind">Для чего презентация? <span class="required">*</span></label><select name="kind" id="kind" required><option value="study">Учёба / образование</option><option value="business">Бизнес / отчёт</option><option value="pitch">Выступление / питч</option><option value="research">Научная работа / исследование</option><option value="other">Другая задача</option></select></div>
+            <div class="field"><span class="field-label">Формат презентации <span class="required">*</span></span><div class="output-options">
+              <label class="output-card"><input type="radio" name="output" value="visual"><span class="output-card-icon">✦</span><span class="output-card-copy"><strong>Визуальная</strong><small>Сложная графика и выразительный дизайн. Содержимое слайда — единая картинка.</small></span><span class="output-check" aria-hidden="true">✓</span></label>
+              <label class="output-card"><input type="radio" name="output" value="editable" checked><span class="output-card-icon">▤</span><span class="output-card-copy"><strong>Редактируемая</strong><small>Текст и основные объекты можно изменять в PowerPoint.</small></span><span class="output-check" aria-hidden="true">✓</span></label>
+              <label class="output-card"><input type="radio" name="output" value="both"><span class="output-card-icon">◈</span><span class="output-card-copy"><strong>Хочу оба варианта</strong><small>Отдельно согласуем две версии, объём и стоимость.</small></span><span class="output-check" aria-hidden="true">✓</span></label>
+            </div><div class="format-insight" id="format-insight" role="status" aria-live="polite"></div></div>
+            <div class="field"><span class="field-label">Стиль оформления <span class="required">*</span></span><p class="field-description">Эти миниатюры показывают характер оформления, а не готовые шаблоны.</p><div class="style-grid">
+              <label class="style-tile"><input type="radio" name="style" value="minimal" checked><span class="swatch s-minimal"><i></i><b></b></span><span>Минимализм</span></label>
+              <label class="style-tile"><input type="radio" name="style" value="editorial"><span class="swatch s-editorial"><i>Aa</i></span><span>Редакционный</span></label>
+              <label class="style-tile"><input type="radio" name="style" value="medical"><span class="swatch s-medical"><i>✚</i></span><span>Научный</span></label>
+              <label class="style-tile"><input type="radio" name="style" value="corporate"><span class="swatch s-corporate"><i></i><b></b></span><span>Деловой</span></label>
+              <label class="style-tile"><input type="radio" name="style" value="bold"><span class="swatch s-bold"><i>◎</i></span><span>Яркий</span></label>
+              <label class="style-tile"><input type="radio" name="style" value="custom"><span class="swatch s-custom"><i>✳</i></span><span>По референсу</span></label>
+            </div></div>
+            <div class="field field-columns"><div><label for="slides">Сколько слайдов? <span class="required">*</span></label><input id="slides" name="slides" type="number" min="1" max="150" value="10" required inputmode="numeric"></div><div><label for="deadline">Желаемая дата <span class="required">*</span></label><input id="deadline" name="deadline" type="date" required></div></div>
+            <div class="field"><label for="ratio">Соотношение сторон</label><select name="ratio" id="ratio"><option value="16:9">16:9 — современный широкий экран</option><option value="4:3">4:3 — классический формат</option><option value="portrait">Вертикальное — под телефон / публикацию</option></select></div>
+            <p class="inline-disclaimer">Дата в брифе — пожелание, не подтверждённый дедлайн. Возможность выполнения согласуем отдельно.</p>
+          </fieldset>
+          <fieldset class="form-stage" data-stage="1" hidden><legend><span class="legend-number">02</span> Содержание и материалы</legend><p class="stage-lead">Чем точнее задача, тем легче подобрать оформление и оценить объём работы.</p>
+            <div class="field"><label for="topic">Тема презентации <span class="required">*</span></label><input id="topic" name="topic" maxlength="180" required placeholder="Например: адаптация организма к нагрузке"></div>
+            <div class="field field-columns"><div><label for="audience">Кто будет смотреть?</label><input id="audience" name="audience" maxlength="160" placeholder="Студенты, преподаватель, коллеги…"></div><div><label for="purpose">Какой результат нужен?</label><input id="purpose" name="purpose" maxlength="200" placeholder="Объяснить тему, убедить, защитить…"></div></div>
+            <div class="field"><label for="materials">Что уже готово?</label><select id="materials" name="materials"><option value="ready">Есть весь текст и материалы</option><option value="partial" selected>Есть часть материалов, нужна помощь со структурой</option><option value="from_scratch">Есть только тема, нужно обсудить подготовку содержания</option></select><p class="field-description">Подготовка текста и исследование — отдельный объём работы.</p></div>
+            <div class="field"><label for="notes">Пожелания и особенности</label><textarea id="notes" name="notes" rows="5" maxlength="2400" placeholder="Структура, обязательные графики и формулы, фирменные цвета, особенности выступления, ограничения…"></textarea></div>
+            <div class="field"><label for="references">Материалы и примеры дизайна</label><textarea id="references" name="references" rows="3" maxlength="1200" placeholder="Вставьте ссылки на папку с материалами, референсы, сайт или документ"></textarea><p class="field-description">Прикрепление файлов пока не подключено. Пожалуйста, не присылайте секретные материалы через общедоступные ссылки.</p></div>
+            <div class="field field-columns"><div><label for="budget">Ориентир по бюджету</label><input id="budget" name="budget" maxlength="80" placeholder="Например, до 5000 ₽ или обсудим"></div><div><label for="delivery">Дополнительный файл</label><select id="delivery" name="delivery"><option value="pptx">Достаточно PowerPoint (.pptx)</option><option value="pptx_pdf">PowerPoint + PDF</option></select></div></div>
+            <label class="toggle-option"><input type="checkbox" name="speaker_notes" id="speaker_notes"><span><strong>Нужны заметки для выступления</strong><small>Тезисы или текст для докладчика — обсудим отдельно.</small></span></label>
+          </fieldset>
+          <fieldset class="form-stage" data-stage="2" hidden><legend><span class="legend-number">03</span> Контакт и проверка</legend><p class="stage-lead">Проверим детали и оставим способ связи, чтобы можно было обсудить проект.</p>
+            <div class="field field-columns"><div><label for="name">Как к вам обращаться? <span class="required">*</span></label><input id="name" name="name" maxlength="100" autocomplete="name" required placeholder="Имя"></div><div><label for="contact">Telegram или email <span class="required">*</span></label><input id="contact" name="contact" maxlength="160" required placeholder="@username или name@example.com" autocomplete="email"></div></div>
+            <div class="review-block"><div class="review-head"><h3>Ваш бриф</h3><span>ПЕРЕД ОТПРАВКОЙ</span></div><dl id="review"></dl></div>
+            <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>Я понимаю, что мой бриф откроется в Telegram и данные будут отправлены только после того, как я отправлю сообщение. <span class="required">*</span></span></label>
+            <p class="privacy-note">Данные не сохраняются на сайте. После заполнения открывается Telegram с черновиком сообщения. Исполнитель увидит заявку только после вашего нажатия «Отправить» в Telegram.</p>
+          </fieldset>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+          <div class="success-view" id="success" role="status" hidden>
+  <div class="success-icon">↗</div>
+  <h3>Бриф подготовлен</h3>
+  <p>Нажмите кнопку ниже, проверьте текст и отправьте сообщение в Telegram. Если Telegram не открылся автоматически, воспользуйтесь кнопкой или скопируйте бриф.</p>
+  <a id="telegram-send" class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://t.me/mm_bulgakov">Открыть Telegram →</a>
+  <button type="button" id="copy-brief" class="button button-ghost">Скопировать бриф</button>
+  <p id="copy-feedback" class="privacy-note" aria-live="polite"></p>
+  <button type="button" id="again" class="button button-ghost">Изменить бриф</button>
+</div>
+<div id="form-actions" class="form-actions"><button type="button" class="button button-ghost" id="back" hidden><span aria-hidden="true">←</span> Назад</button><button type="button" class="button button-primary" id="next">Продолжить <span aria-hidden="true">→</span></button><button type="submit" class="button button-primary" id="send" hidden>Перейти в Telegram <span aria-hidden="true">→</span></button></div>
+        </form>
+          <aside class="brief-aside"><h3>Ваш выбор</h3><p><span>Формат</span><strong id="sum-output">Редактируемая</strong></p><p><span>Стиль</span><strong id="sum-style">Минимализм</strong></p><p><span>Слайдов</span><strong id="sum-slides">10</strong></p><p><span>Дата</span><strong id="sum-deadline">Уточняется</strong></p></aside>
+        </div>
+      </div>
+    </section>
+    <section class="compact-faq container" id="questions" aria-labelledby="faq-heading"><details class="compact-faq-main"><summary id="faq-heading">Вопросы о сроках, правках и исходниках</summary>
+      <div class="faq-list">
+        <details><summary>Если презентация «визуальная», я вообще смогу что-то менять?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Вы сможете переставлять и удалять слайды, заменять картинку целиком, добавлять поверх неё свои объекты PowerPoint. Но текст, таблицы и графика, объединённые в одну картинку, не редактируются отдельно. Их изменение обычно требует новой версии изображения.</div></details>
+        <details><summary>Можно ли сделать очень красиво и при этом всё редактировать?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Да, для многих задач. Но некоторые необычные иллюстрации, текстуры, сложные эффекты и изображения останутся нераздельными. Если принципиальна полная редактируемость каждой детали, напишите об этом в брифе — обсудим возможные компромиссы дизайна.</div></details>
+        <details><summary>Будут ли точными формулы, диаграммы и научные данные?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Для научных материалов необходимы ваши проверенные данные, формулы и источники. Особенно важно сверять подписи, единицы измерения и формулы на изображениях: сложную графику нельзя автоматически считать достоверной. Уровень предметной проверки и ответственность за окончательное утверждение содержания согласуем отдельно.</div></details>
+        <details><summary>Что нужно прислать и можно ли заказать «с нуля»?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Можно прислать готовый текст, структуру, фотографии, цифры, фирменный стиль и примеры дизайна. Если есть только тема, так и укажите: подготовка структуры, поиск информации и написание текста — отдельные задачи, влияющие на сроки и стоимость. Пока материалы передаются ссылками; загрузка файлов в форме не настроена.</div></details>
+        <details><summary>Какие правки входят и что с исходниками?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Количество раундов правок, порядок согласования и состав исходных файлов определяются до начала заказа. Изменение ранее согласованной темы, структуры или формата может быть отдельной работой. Не обещаем неограниченные бесплатные правки и передачу рабочих исходников по умолчанию.</div></details>
+        <details><summary>От чего зависит цена и можно ли заказать срочно?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">От числа слайдов, сложности визуала, объёма подготовки содержания, срочности, необходимой редактируемости, анимации и дополнительных форматов. Укажите желаемую дату и бюджет — обсудим реальную возможность выполнения. Отправка брифа не означает бронирование срока или согласованную цену.</div></details>
+        <details><summary>Будет ли PDF и что делать со шрифтами?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">При необходимости можно согласовать PDF для удобного просмотра. В редактируемом PPTX отображение зависит от установленных на устройстве шрифтов; при передаче уточним совместимость или альтернативы. Соотношение сторон обычно 16:9, но можно выбрать другой вариант.</div></details>
+      </div>
+    
+    </details></section>
+    <section class="compact-footer-note container"><p>Заявка — запрос на обсуждение, а не подтверждённая покупка. Цена, сроки, правки, исходники и передача файлов согласуются отдельно.</p><p>Сайт формирует черновик для Telegram; нажмите «Отправить» в мессенджере.</p></section>
+  <section id="privacy" class="public-privacy container">
+  <h2>Как передаётся заявка</h2>
+  <p>Заявка не сохраняется на сайте. Информация формируется в браузере и попадает в Telegram только если вы отправите подготовленное сообщение. Telegram — сторонний сервис; перед отправкой учитывайте его условия. Не включайте в заявку пароли, паспортные данные, медицинские документы и конфиденциальную информацию. Для изменения или удаления информации из переписки обратитесь в чат к исполнителю.</p>
+  <p>Отправка заявки не означает оплату или подтверждение заказа: стоимость, сроки, число правок и состав файлов согласуются в переписке. Загрузка файлов на этом сайте не предусмотрена.</p>
+</section>
+<a class="mobile-fixed-cta" href="#brief">Заполнить бриф <span>→</span></a>
+</main>
+</body>
+</html>
