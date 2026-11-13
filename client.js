@@ -25,8 +25,9 @@ function hideError() {
 }
 function showError(message) {
   errorBox.textContent = message; errorBox.hidden = false;
-  errorBox.setAttribute("tabindex", "-1");
-  errorBox.focus({preventScroll:false});
+  // The error is announced by its live region; keep keyboard focus on the invalid field.
+  // Moving focus to the banner made checkbox/contact correction unnecessarily difficult.
+  errorBox.setAttribute("role", "alert");
 }
 function currentSummary(){
   $("sum-output").textContent = label.output[value("output")] || "—";
