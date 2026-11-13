@@ -693,6 +693,13 @@ body.compact-site{background:#fafbf8;color:#26342b;overflow-x:clip;font-size:14p
 /* Interactive form: never animate document scroll while buttons are being clicked. */
 html:has(body.compact-site){scroll-behavior:auto!important}
 
+
+/* Keep the actual sample available without pushing the order form off the first screen. */
+.compact-site .portfolio-preview:not([open]) .portfolio-summary{padding:10px 13px;min-height:48px}
+.compact-site .portfolio-preview:not([open]) .portfolio-summary>img,
+.compact-site .portfolio-preview:not([open]) .portfolio-copy small{display:none}
+.compact-site .portfolio-preview:not([open]) .portfolio-copy{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;width:100%}
+
 /* Public static version controls */
 .mobile-fixed-cta{display:none}
 .success-view .button{margin:5px;min-width:185px}
