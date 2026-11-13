@@ -18,7 +18,11 @@ const explanations = {
 };
 let step = 0;
 function value(name) { return form.elements[name]?.value ?? ""; }
-function hideError() { errorBox.hidden = true; errorBox.textContent = ""; }
+function hideError() {
+  errorBox.hidden = true;
+  errorBox.textContent = "";
+  form.querySelectorAll('[aria-invalid="true"]').forEach(el => el.removeAttribute("aria-invalid"));
+}
 function showError(message) {
   errorBox.textContent = message; errorBox.hidden = false;
   errorBox.setAttribute("tabindex", "-1");
@@ -56,6 +60,8 @@ function displayStage(next, focus = true){
 function validateStage(){
   for(const input of stages[step].querySelectorAll("input, textarea, select")){
     if(!input.checkValidity()){
+      input.setAttribute("aria-invalid", "true");
+      input.focus({preventScroll:false});
       input.reportValidity();
       if(input.type === "checkbox") showError("Для отправки заявки требуется согласие на использование контактных данных.");
       return false;
@@ -67,7 +73,8 @@ function validateStage(){
     const isMail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(contact);
     if(!isTelegram && !isMail){
       showError("Укажите действующий Telegram (@username, от 5 символов) или email, чтобы можно было связаться с вами.");
-      $("contact").focus({preventScroll:true});
+      $("contact").setAttribute("aria-invalid", "true");
+      $("contact").focus({preventScroll:false});
       return false;
     }
   }
