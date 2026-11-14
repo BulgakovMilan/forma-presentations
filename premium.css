@@ -344,3 +344,260 @@ body.premium-site{
 @media(max-width:760px){
  .premium-site .hero-wave{right:-270px;opacity:.88}
 }
+
+
+/* FORMA motion system — intentionally quick, tactile, and consistent.
+   Use composited transforms/opacity, avoid layout shift on selection. */
+.premium-site{
+  --motion-ease:cubic-bezier(.22,1,.36,1);
+  --motion-fast:170ms;
+  --motion-regular:250ms;
+  --motion-panel:310ms;
+}
+.premium-site .button,
+.premium-site .compact-order-link,
+.premium-site .format-select,
+.premium-site .compact-inline-link,
+.premium-site .portfolio-summary,
+.premium-site .mobile-menu summary,
+.premium-site .compact-more>summary,
+.premium-site .compact-faq-main>summary,
+.premium-site .optional-details>summary{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  transition:
+    transform var(--motion-fast) var(--motion-ease),
+    color var(--motion-fast) ease,
+    background-color var(--motion-regular) ease,
+    border-color var(--motion-regular) ease,
+    box-shadow var(--motion-regular) var(--motion-ease),
+    filter var(--motion-fast) ease;
+}
+.premium-site .button,
+.premium-site .compact-order-link,
+.premium-site .format-select{
+  font-family:inherit;
+  letter-spacing:-.012em;
+  line-height:1.35;
+  text-wrap:pretty;
+  font-weight:700;
+  min-width:0;
+}
+.premium-site .button{
+  gap:11px;
+  white-space:normal;
+  text-align:center;
+  min-height:46px;
+}
+.premium-site .button > span,
+.premium-site .compact-order-link > span,
+.premium-site .format-select > span:last-child{
+  flex:0 0 auto;
+  display:inline-block;
+  line-height:1;
+  transition:transform var(--motion-fast) var(--motion-ease);
+}
+.premium-site .button:hover,
+.premium-site .compact-order-link:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.045);
+  box-shadow:0 8px 24px #a778ef25, inset 0 1px #ffffff7a;
+}
+.premium-site .button:hover > span,
+.premium-site .compact-order-link:hover > span,
+.premium-site .format-select:hover > span:last-child{transform:translateX(3px)}
+.premium-site .button:active,
+.premium-site .compact-order-link:active,
+.premium-site .format-select:active,
+.premium-site .compact-inline-link:active{
+  transform:translateY(1px) scale(.98);
+  filter:brightness(.96);
+  transition-duration:95ms;
+}
+.premium-site .button:disabled,
+.premium-site button:disabled{cursor:not-allowed;opacity:.55;transform:none;filter:none}
+.premium-site .compact-order-link{
+  min-height:44px;
+  justify-content:center;
+  text-align:center;
+  white-space:nowrap;
+  line-height:1.2;
+  gap:13px;
+}
+.premium-site .format-select{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:10px;
+  min-height:44px;
+  padding:9px 0 0;
+  font-size:12.5px;
+  color:#d7b9ff;
+  white-space:normal;
+}
+.premium-site .format-select:hover{color:#faf3ff}
+.premium-site .compact-inline-link{min-height:38px;line-height:1.5;text-align:left;padding:5px 0}
+.premium-site .compact-format-card,
+.premium-site .benefit-card,
+.premium-site .work-step,
+.premium-site .portfolio-preview{
+  transition:
+    border-color var(--motion-regular) ease,
+    background-color var(--motion-regular) ease,
+    box-shadow var(--motion-regular) var(--motion-ease),
+    transform var(--motion-regular) var(--motion-ease);
+}
+@media(hover:hover) and (pointer:fine){
+  .premium-site .compact-format-card:hover,
+  .premium-site .benefit-card:hover,
+  .premium-site .work-step:hover{
+    transform:translateY(-3px);
+    border-color:#695184;
+    box-shadow:0 15px 34px #0005,0 0 0 1px #9969e022;
+  }
+  .premium-site .portfolio-preview:hover{border-color:#695184}
+}
+.premium-site .portfolio-summary>img,
+.premium-site .mini-preview img{
+  transition:transform var(--motion-panel) var(--motion-ease),filter var(--motion-panel) ease;
+}
+@media(hover:hover) and (pointer:fine){
+  .premium-site .portfolio-summary:hover>img{transform:scale(1.025);filter:brightness(1.07)}
+  .premium-site .compact-format-card:hover .mini-preview img{transform:scale(1.025)}
+}
+.premium-site .format-label,
+.premium-site .portfolio-open,
+.premium-site .compact-more summary::after,
+.premium-site .compact-faq-main>summary::after{
+  transition:color var(--motion-fast) ease,transform var(--motion-regular) var(--motion-ease);
+}
+.premium-site .compact-more summary::after,
+.premium-site .compact-faq-main>summary::after{
+  display:inline-block;
+  transform-origin:center;
+}
+.premium-site .compact-more[open]>summary::after,
+.premium-site .compact-faq-main[open]>summary::after{transform:rotate(90deg)}
+.premium-site .output-card,
+.premium-site .style-tile{
+  transition:
+    border-color var(--motion-regular) ease,
+    background-color var(--motion-regular) ease,
+    box-shadow var(--motion-regular) var(--motion-ease),
+    transform var(--motion-fast) var(--motion-ease);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.premium-site .output-card,
+.premium-site .output-card:has(input:checked){
+  border:1px solid #51495f;
+  padding:12px 12px 10px;
+}
+.premium-site .output-card:has(input:checked){
+  border-color:#c3a0f5;
+  background:#332542;
+  box-shadow:inset 0 0 0 1px #c3a0f5,0 0 0 3px #b184ef14;
+}
+.premium-site .style-tile,
+.premium-site .style-tile:has(input:checked){
+  border:1px solid #494256;
+  padding:5px 5px 8px;
+}
+.premium-site .style-tile:has(input:checked){
+  border-color:#c6a3f5;
+  background:#30243d;
+  box-shadow:inset 0 0 0 1px #c6a3f5;
+}
+.premium-site .output-card:active,
+.premium-site .style-tile:active{transform:scale(.989)}
+.premium-site .format-insight{transition:background-color var(--motion-regular) ease,opacity var(--motion-regular) ease}
+.premium-site #stage-progress{
+  transition:width 320ms var(--motion-ease);
+  will-change:width;
+}
+@keyframes forma-stage-enter{
+  from{opacity:.25;transform:translate3d(0,10px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+.premium-site .form-stage:not([hidden]),
+.premium-site .success-view:not([hidden]){
+  animation:forma-stage-enter 270ms var(--motion-ease) both;
+}
+@keyframes forma-menu-open{
+  from{opacity:0;transform:translateY(-7px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.premium-site .mobile-menu[open] nav{
+  animation:forma-menu-open 220ms var(--motion-ease) both;
+  transform-origin:top right;
+}
+.premium-site .mobile-menu summary span{
+  transition:transform var(--motion-regular) var(--motion-ease),opacity var(--motion-fast) ease;
+}
+.premium-site .mobile-menu[open] summary span:first-child{transform:translateY(6.5px) rotate(45deg)}
+.premium-site .mobile-menu[open] summary span:nth-child(2){opacity:0}
+.premium-site .mobile-menu[open] summary span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.premium-site .mobile-menu nav a{
+  transition:background-color var(--motion-fast) ease,color var(--motion-fast) ease;
+  border-radius:7px;
+}
+.premium-site .mobile-menu nav a:active{background:#49375e}
+@supports (interpolate-size:allow-keywords){
+  .premium-site{interpolate-size:allow-keywords}
+  .premium-site details:not(.mobile-menu)::details-content{
+    block-size:0;
+    overflow:clip;
+    opacity:0;
+    transition:
+      block-size 300ms var(--motion-ease),
+      opacity 240ms ease,
+      content-visibility 300ms allow-discrete;
+  }
+  .premium-site details:not(.mobile-menu)[open]::details-content{
+    block-size:auto;
+    opacity:1;
+  }
+}
+.premium-site .field input:not([type=radio]):not([type=checkbox]),
+.premium-site .field select,
+.premium-site .field textarea{
+  transition:border-color 180ms ease,background-color 180ms ease,box-shadow 180ms ease;
+}
+.premium-site .field input:focus,
+.premium-site .field textarea:focus,
+.premium-site .field select:focus{
+  border-color:#b999ee;
+  box-shadow:0 0 0 3px #b184ef20;
+}
+.premium-site .portfolio-summary,
+.premium-site .compact-more>summary,
+.premium-site .compact-faq-main>summary{min-height:44px}
+.premium-site .compact-faq .faq-list summary{min-height:48px;display:flex;align-items:center}
+@media(max-width:760px){
+  .premium-site .button{min-height:44px;padding:11px 14px;font-size:12px}
+  .premium-site .hero-actions{gap:9px}
+  .premium-site .hero-actions .button{min-height:44px;max-width:100%}
+  .premium-site .format-select{min-height:44px;font-size:12px}
+  .premium-site .output-card,
+  .premium-site .output-card:has(input:checked){padding:10px 12px}
+  .premium-site .style-tile,
+  .premium-site .style-tile:has(input:checked){padding:5px 5px 8px}
+  .premium-site .format-heading{flex-wrap:wrap;row-gap:5px}
+  .premium-site .format-heading h3{white-space:nowrap;max-width:100%}
+  .premium-site .format-label{margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .premium-site *,
+  .premium-site *::before,
+  .premium-site *::after,
+  .premium-site details::details-content{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+/* The earlier compact baseline used a more specific rule on button elements. */
+.premium-site .compact-format-card .format-select{min-height:46px;padding:9px 0;font-size:12.5px}
+@media(max-width:760px){.premium-site .compact-format-card .format-select{min-height:44px}}

@@ -217,3 +217,26 @@ $("again").addEventListener("click",()=>{
   displayStage(2);
 });
 currentSummary();
+
+
+// Motion UX: smooth only when following a section link, not during form steps.
+// Form navigation remains instant and reliable, even with rapid taps.
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", event => {
+    const hash = anchor.getAttribute("href");
+    if (!hash || hash === "#") return;
+    const target = document.getElementById(hash.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    if (anchor.closest(".mobile-menu")) {
+      const menu = anchor.closest(".mobile-menu");
+      if (menu) menu.open = false;
+    }
+    target.scrollIntoView({
+      behavior: prefersReducedMotion.matches ? "instant" : "smooth",
+      block:"start"
+    });
+    window.history.replaceState(null, "", hash);
+  });
+});
