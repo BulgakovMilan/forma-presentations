@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f9f6">
-  <meta name="description" content="Заказать презентацию PowerPoint: визуальную или редактируемую. Выберите формат, заполните короткий бриф и обсудите сроки.">
+  <meta name="theme-color" content="#0c0b12">
+  <meta name="description" content="Заказать визуальную или редактируемую презентацию PowerPoint для учёбы, проектов и выступлений. Понятный бриф, примеры работ.">
   <title>FORMA — презентации на заказ</title>
   <link rel="canonical" href="https://bulgakovmilan.github.io/forma-presentations/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -23,64 +23,85 @@
   <meta name="twitter:description" content="Визуальные и редактируемые PPTX. Заполните краткий бриф.">
   <meta name="twitter:image" content="https://bulgakovmilan.github.io/forma-presentations/social-preview.jpg">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./premium.css">
   <script src="./client.js" defer></script>
 </head>
-<body class="compact-site">
-  <header class="compact-header">
-    <div class="container compact-header-inner">
-      <a class="identity" href="./" aria-label="FORMA — главная"><span class="identity-symbol">F<span class="symbol-dot"></span></span><span class="identity-name">FORMA<span class="identity-sub">ПРЕЗЕНТАЦИИ</span></span></a>
-      <nav aria-label="Разделы сайта">
-        <a href="#formats">Форматы</a>
-        <a href="#questions">Вопросы</a>
-        <a class="compact-order-link" href="#brief">Оставить заявку</a>
-      </nav>
-      
-    </div>
-  </header>
-  <main>
-    <section class="compact-hero container">
-      <div><div class="compact-eyebrow">PowerPoint · PPTX · оформление и содержание</div>
-      <h1>Презентации на заказ</h1>
-      <p>Учебные, научные и деловые презентации в PowerPoint. Выберите формат и опишите задачу — стоимость и срок обсудим до начала работы.</p></div>
-      <a class="button button-primary" href="#brief">Заполнить бриф <span aria-hidden="true">→</span></a>
-    </section>
-    <section class="compact-formats container" id="formats" aria-labelledby="formats-heading">
-      <div class="compact-section-heading"><h2 id="formats-heading">Выберите формат</h2><span>Оба варианта — PowerPoint (.pptx)</span></div>
-      <div class="compact-format-grid">
-        <article class="compact-format-card">
-          <div class="compact-format-top"><h3>Визуальная</h3><span>Для эффектной подачи</span></div>
-          <p>Сложные композиции и графика. <strong>Может выглядеть эффектнее,</strong> но текст внутри слайда-картинки отдельно не изменить.</p>
-          <button type="button" data-choose-output="visual">Выбрать <span aria-hidden="true">→</span></button>
-        </article>
-        <article class="compact-format-card">
-          <div class="compact-format-top"><h3>Редактируемая</h3><span>Для частых правок</span></div>
-          <p>Текст и основные объекты можно менять в PowerPoint. Дизайн тоже может быть красивым; часть графики останется изображениями.</p>
-          <button type="button" data-choose-output="editable">Выбрать <span aria-hidden="true">→</span></button>
-        </article>
-      </div>
-      <details class="compact-more"><summary>Что именно можно редактировать? А если нужны оба формата?</summary>
-        <div class="compact-more-content"><p>В обоих вариантах можно переставлять и удалять целые слайды. В визуальном варианте отдельные буквы, числа и иллюстрации внутри картинки не редактируются без переработки. В редактируемом варианте текст, фигуры и основные диаграммы могут оставаться самостоятельными объектами; сложные эффекты и фотографии могут быть изображениями.</p>
-        <p>Можно заказать обе версии, но это дополнительный объём работы: внешний вид, стоимость и состав файлов обсуждаются отдельно. Не всякий эффект можно перенести в полностью редактируемую форму один в один.</p>
-        <button class="compact-inline-link" type="button" data-choose-output="both">Обсудить оба варианта →</button></div>
-      </details>
-      <details class="portfolio-preview" id="portfolio">
-        <summary class="portfolio-summary">
-          <img src="./portfolio-cover.webp" alt="Титульный слайд учебной презентации об адаптации и утомлении" width="1280" height="720" loading="lazy" decoding="async">
-          <span class="portfolio-copy"><strong>Пример редактируемого PPTX</strong>
-          <small>Физиология человека · 5 слайдов · учебный демонстрационный проект, не заказ клиента.</small>
-          <span class="portfolio-open">Посмотреть слайды <span aria-hidden="true">↗</span></span></span>
-        </summary>
-        <div class="portfolio-extra">
-          <img src="./portfolio-chart.webp" width="1280" height="720" loading="lazy" decoding="async" alt="График нагрузки и восстановления, оформленный отдельными элементами PowerPoint">
-          <p>Пример показывает один из возможных стилей. В исходном PowerPoint текст и фигуры выполнены отдельными объектами. Для других тем и визуального формата дизайн подбирается индивидуально.</p>
+<body class="compact-site premium-site">
+  <div class="page-shell">
+    <header class="compact-header" id="top">
+      <div class="container compact-header-inner">
+        <a class="identity" href="./" aria-label="FORMA — на главную"><span class="identity-name">FORMA</span></a>
+        <nav class="desktop-nav" aria-label="Разделы сайта">
+          <a href="#portfolio">Примеры</a><a href="#formats">Форматы</a><a href="#process">Как работаю</a><a href="#questions">FAQ</a>
+        </nav>
+        <div class="header-end">
+          <a class="compact-order-link" href="#brief">Заказать <span aria-hidden="true">↗</span></a>
+          
+          <details class="mobile-menu">
+            <summary aria-label="Открыть меню"><span></span><span></span><span></span></summary>
+            <nav aria-label="Мобильное меню"><a href="#portfolio">Примеры</a><a href="#formats">Форматы</a><a href="#process">Как работаю</a><a href="#questions">Вопросы</a><a href="#brief">Заполнить бриф</a></nav>
+          </details>
         </div>
-      </details>
-    </section>
-    <section class="brief-section compact-brief" id="brief" aria-labelledby="brief-heading">
-      <div class="container">
-        <div class="compact-section-heading brief-heading"><div><h2 id="brief-heading">Короткий бриф</h2><p>3 шага. Отправка заявки бесплатная и ни к чему не обязывает.</p></div><div class="step-display"><span>Шаг <strong id="stage-number">01</strong> из 03</span><div class="step-track"><i id="stage-progress"></i></div></div></div>
-        <div class="brief-layout">
-          <form id="order-form" novalidate aria-label="Бриф на презентацию">
+      </div>
+    </header>
+    <main>
+      <section class="compact-hero container" aria-labelledby="hero-heading">
+        <img class="hero-wave" src="./violet-wave.svg" alt="" width="1100" height="610" fetchpriority="high" aria-hidden="true">
+        <div class="hero-text">
+          <p class="compact-eyebrow">ПРЕЗЕНТАЦИИ НА ЗАКАЗ</p>
+          <h1 id="hero-heading">Презентации<br>для учёбы, проектов<br>и выступлений</h1>
+          <p class="hero-lead">Структурно. Визуально. По задаче.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#brief">Заказать презентацию <span aria-hidden="true">→</span></a>
+            <a class="button button-outline" href="#portfolio">Смотреть примеры</a>
+          </div>
+        </div>
+      </section>
+      <section class="benefits container" aria-label="Что важно в работе"><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="m20 17 .8 2.2L23 20l-2.2.8L20 23l-.8-2.2L17 20l2.2-.8z"/><path d="m4 17 .7 1.3L6 19l-1.3.7L4 21l-.7-1.3L2 19l1.3-.7z"/></svg></span><strong>Дизайн под задачу</strong><span>Без случайных шаблонов</span></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></span><strong>Понятная структура</strong><span>Логика и акценты</span></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.1" fill="#111019"/><circle cx="15" cy="17" r="2.1" fill="#111019"/></svg></span><strong>Нужный формат</strong><span>Визуальный или редактируемый</span></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><strong>Срок согласуем</strong><span>До начала работы</span></article></section>
+      <section class="compact-formats container" id="formats" aria-labelledby="formats-heading">
+        <div class="compact-section-heading"><h2 id="formats-heading">Два формата на выбор</h2><p>Оба — в PowerPoint (.pptx), но с разной свободой редактирования.</p></div>
+        <div class="compact-format-grid">
+          <article class="compact-format-card visual-format">
+            <div class="format-heading"><span class="format-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><h3>Визуальная</h3><span class="format-label">Выразительный дизайн</span></div>
+            <div class="format-main"><p>Больше свободы в графике и композиции. Каждый слайд — готовое изображение; отдельный текст не редактируется.</p>
+              <div class="mini-preview visual-mini" aria-label="Условная иллюстрация визуального стиля"><span>VISUAL<br><em>IDEA.</em></span><i></i></div>
+            </div>
+            <button type="button" class="format-select" data-choose-output="visual">Выбрать визуальную <span aria-hidden="true">↗</span></button>
+          </article>
+          <article class="compact-format-card editable-format">
+            <div class="format-heading"><span class="format-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.7-1 10.7-10.7a2 2 0 0 0-2.8-2.8L5.9 16.2z"/><path d="m14.9 6.2 2.9 2.9"/></svg></span><h3>Редактируемая</h3><span class="format-label">Удобно обновлять</span></div>
+            <div class="format-main"><p>Текст и основные объекты можно менять самостоятельно. Сложные изображения могут оставаться нераздельными.</p>
+              <div class="mini-preview editable-mini"><img src="./portfolio-chart.webp" alt="Редактируемый научный слайд с графиком" loading="lazy" width="1280" height="720"></div>
+            </div>
+            <button type="button" class="format-select" data-choose-output="editable">Выбрать редактируемую <span aria-hidden="true">↗</span></button>
+          </article>
+        </div>
+        <details class="compact-more"><summary>Чем именно отличаются форматы? Нужны оба?</summary>
+          <div class="compact-more-content"><p>В обоих PPTX можно менять порядок слайдов. В визуальном отдельные слова, формулы и графика внутри слайда-картинки не редактируются — изменения потребуют пересборки. В редактируемом варианте основные элементы остаются объектами PowerPoint, но фотографии и часть сложной графики могут быть изображениями.</p><p>Нужны две версии? Это можно обсудить, но объём работы и стоимость согласуются отдельно. Визуальный вариант не обязательно красивее для любой задачи.</p><button type="button" class="compact-inline-link" data-choose-output="both">Обсудить оба варианта →</button></div>
+        </details>
+      </section>
+      <section class="portfolio-section container" id="portfolio" aria-labelledby="portfolio-heading">
+        <div class="compact-section-heading"><h2 id="portfolio-heading">Пример работы</h2><span class="portfolio-type">Учебная · Научная · Редактируемая</span></div>
+        <details class="portfolio-preview">
+          <summary class="portfolio-summary"><img src="./portfolio-cover.webp" width="1280" height="720" alt="Первый слайд презентации об адаптации организма" loading="lazy" decoding="async">
+            <span class="portfolio-copy"><strong>Физиология человека</strong><small>Адаптация, утомление и резервные возможности. Учебный демонстрационный проект, не заказ клиента.</small><span class="portfolio-open">Посмотреть ещё два слайда <span aria-hidden="true">↗</span></span></span>
+          </summary>
+          <div class="portfolio-extra">
+            <img src="./portfolio-detail.webp" width="1280" height="720" alt="Второй слайд демонстрационной научной презентации" loading="lazy" decoding="async">
+            <img src="./portfolio-chart.webp" width="1280" height="720" alt="Слайд демонстрационной презентации с графиками" loading="lazy" decoding="async">
+            <p>Три слайда из одной настоящей демонстрационной презентации. Стиль и состав работы для нового заказа подбираются отдельно.</p>
+          </div>
+        </details>
+      </section>
+      <section class="process-section container" id="process" aria-labelledby="process-heading">
+        <div class="compact-section-heading"><h2 id="process-heading">Как заказать</h2><span>Всего три шага</span></div>
+        <div class="process-grid"><article class="work-step"><div class="work-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div><span class="work-step-number">01</span><h3>Бриф</h3><p>Тема, объём, примеры и пожелания.</p></article><article class="work-step"><div class="work-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.7-1 10.7-10.7a2 2 0 0 0-2.8-2.8L5.9 16.2z"/><path d="m14.9 6.2 2.9 2.9"/></svg></div><span class="work-step-number">02</span><h3>Согласование</h3><p>Стиль, сроки, стоимость и правки.</p></article><article class="work-step"><div class="work-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></div><span class="work-step-number">03</span><h3>Готовая работа</h3><p>Файлы в согласованном формате.</p></article></div>
+      </section>
+      <section class="brief-section compact-brief" id="brief" aria-labelledby="brief-heading">
+        <div class="container">
+          <div class="compact-section-heading brief-heading"><div><h2 id="brief-heading">Оформить заявку</h2><p>Ответ по условиям после просмотра вашего брифа. Отправка бесплатная.</p></div><div class="step-display"><span>Шаг <strong id="stage-number">01</strong> из 03</span><div class="step-track"><i id="stage-progress"></i></div></div></div>
+          <div class="brief-layout">
+            <form id="order-form" novalidate aria-label="Бриф на презентацию">
           <fieldset class="form-stage" data-stage="0"><legend><span class="legend-number">01</span> Формат и оформление</legend><p class="stage-lead">Сначала определим, как презентация должна выглядеть и насколько гибкой быть в работе.</p>
             <div class="field"><label for="kind">Для чего презентация? <span class="required">*</span></label><select name="kind" id="kind" required><option value="study">Учёба / образование</option><option value="business">Бизнес / отчёт</option><option value="pitch">Выступление / питч</option><option value="research">Научная работа / исследование</option><option value="other">Другая задача</option></select></div>
             <div class="field"><span class="field-label">Формат презентации <span class="required">*</span></span><div class="output-options">
@@ -127,11 +148,12 @@
 </div>
 <div id="form-actions" class="form-actions"><button type="button" class="button button-ghost" id="back" hidden><span aria-hidden="true">←</span> Назад</button><button type="button" class="button button-primary" id="next">Продолжить <span aria-hidden="true">→</span></button><button type="submit" class="button button-primary" id="send" hidden>Перейти в Telegram <span aria-hidden="true">→</span></button></div>
         </form>
-          <aside class="brief-aside"><h3>Ваш выбор</h3><p><span>Формат</span><strong id="sum-output">Редактируемая</strong></p><p><span>Стиль</span><strong id="sum-style">Минимализм</strong></p><p><span>Слайдов</span><strong id="sum-slides">10</strong></p><p><span>Дата</span><strong id="sum-deadline">Уточняется</strong></p></aside>
+            <aside class="brief-aside" aria-label="Выбранные параметры"><h3>Ваш выбор</h3><p><span>Формат</span><strong id="sum-output">Редактируемая</strong></p><p><span>Стиль</span><strong id="sum-style">Минимализм</strong></p><p><span>Слайдов</span><strong id="sum-slides">10</strong></p><p><span>Срок</span><strong id="sum-deadline">Уточняется</strong></p></aside>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="compact-faq container" id="questions" aria-labelledby="faq-heading"><details class="compact-faq-main"><summary id="faq-heading">Вопросы о сроках, правках и исходниках</summary>
+      </section>
+      <section class="compact-faq container" id="questions" aria-labelledby="faq-heading">
+<h2 id="faq-heading">Частые вопросы</h2><details class="compact-faq-main"><summary>Вопросы о сроках, правках и исходниках</summary>
       <div class="faq-list">
         <details><summary>Если презентация «визуальная», я вообще смогу что-то менять?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Вы сможете переставлять и удалять слайды, заменять картинку целиком, добавлять поверх неё свои объекты PowerPoint. Но текст, таблицы и графика, объединённые в одну картинку, не редактируются отдельно. Их изменение обычно требует новой версии изображения.</div></details>
         <details><summary>Можно ли сделать очень красиво и при этом всё редактировать?<span class="faq-symbol" aria-hidden="true">+</span></summary><div class="faq-answer">Да, для многих задач. Но некоторые необычные иллюстрации, текстуры, сложные эффекты и изображения останутся нераздельными. Если принципиальна полная редактируемость каждой детали, напишите об этом в брифе — обсудим возможные компромиссы дизайна.</div></details>
@@ -143,8 +165,8 @@
       </div>
     
     </details></section>
-    <section class="compact-footer-note container"><p>Заявка — запрос на обсуждение, а не подтверждённая покупка. Цена, сроки, правки, исходники и передача файлов согласуются отдельно.</p><p>Сайт формирует черновик для Telegram; нажмите «Отправить» в мессенджере.</p></section>
-  <section id="privacy" class="public-privacy container">
+      <section class="compact-footer-note container"><p>Стоимость, сроки, число правок и состав итоговых файлов согласуются до начала работы.</p><p>Сайт формирует черновик для Telegram; нажмите «Отправить» в мессенджере.</p></section>
+    <section id="privacy" class="public-privacy container">
 <details class="compact-more">
   <summary>Как передаются данные и что происходит после отправки?</summary>
   <div class="compact-more-content">
@@ -154,5 +176,7 @@
 </details>
 </section>
 </main>
+    <footer class="site-footer"><div class="container footer-inner"><a href="#top" class="footer-logo">FORMA</a><span>Презентации на заказ · PPTX</span><a href="#brief">Обсудить проект ↑</a></div></footer>
+  </div>
 </body>
 </html>

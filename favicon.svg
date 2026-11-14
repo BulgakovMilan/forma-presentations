@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FORMA">
-<rect width="64" height="64" rx="15" fill="#263a2e"/>
-<path d="M17 15h31v9H28v10h16v9H28v11H17z" fill="#f6f8f0"/>
-<circle cx="47" cy="17" r="5" fill="#e6f3a6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<rect width="64" height="64" rx="15" fill="#101017"/>
+<path d="M17 14h32v10H29v9h16v10H29v11H17z" fill="#F8F6FF"/>
+<circle cx="48" cy="17" r="5" fill="#BFA0FF"/>
 </svg>
