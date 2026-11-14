@@ -1,6 +1,24 @@
+# Project roles; the Cloud host still controls the available spawning API.
 [agents]
 enabled = true
 max_concurrent_threads_per_session = 3
+max_depth = 1
 
 [features]
 multi_agent = true
+
+[agents.ui_auditor]
+description = "Read-only UI, responsive layout and accessibility reviewer"
+config_file = "agents/ui_auditor.toml"
+
+[agents.qa_auditor]
+description = "Read-only functional and static integrity reviewer"
+config_file = "agents/qa_auditor.toml"
+
+[agents.frontend_implementer]
+description = "Single scoped writer for explicitly authorized frontend changes"
+config_file = "agents/frontend_implementer.toml"
+
+[agents.release_auditor]
+description = "Read-only review of diff scope and release evidence"
+config_file = "agents/release_auditor.toml"

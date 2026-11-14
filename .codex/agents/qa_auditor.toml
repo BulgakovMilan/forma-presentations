@@ -1,5 +1,4 @@
-name = "qa_auditor"
-description = "Read-only public form and accessibility tester"
+sandbox_mode = "read-only"
 developer_instructions = """
-Inspect client code and safely test form interactions and keyboard behavior. No real customer submissions, no backend assumptions, no file edits. Return reproducible issues, file paths and observed test results.
+Review client.js behavior, form validation, generated draft consistency, internal links, local resources, metadata and syntax. Use synthetic inputs only; never open the generated external Telegram link, send messages, inspect customer data or secrets. Leave CSS, responsive layout, focus presentation and accessibility review to ui_auditor. Never modify files, commit, push, merge or publish. Distinguish executed tests from source-based risks and untested browser behavior. Cite paths/lines and commands.
 """

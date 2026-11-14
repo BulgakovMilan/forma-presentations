@@ -1,0 +1,4 @@
+# Local verification artifacts; never publish browser profiles or scratch output.
+/work/
+__pycache__/
+*.pyc
