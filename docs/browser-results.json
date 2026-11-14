@@ -1,0 +1,110 @@
+{
+  "mode": "headless Chromium, viewport emulation; not real mobile devices",
+  "external_requests_blocked": [],
+  "viewports": [
+    {
+      "width": 320,
+      "height": 900,
+      "page_errors": [],
+      "failed_http_statuses": [],
+      "layout": {
+        "viewport": 320,
+        "document": 320,
+        "portfolioY": 1514.015625,
+        "comparisonY": 1105.234375,
+        "globalFocusOutlineSyntaxValid": false,
+        "topicFontSize": "11.5px",
+        "reducedMotion": true
+      },
+      "anchor_focus": {
+        "activeTag": "BODY",
+        "targetHasFocus": false,
+        "hashMatches": true
+      },
+      "portfolio_filter_dialog": "PASS",
+      "faq": "PASS",
+      "required_empty_validation": "PASS",
+      "stale_draft_reproduced": true,
+      "explicit_reprepare_updates_link": "PASS",
+      "whitespace_required_fields_accepted": true,
+      "external_telegram_link_clicked": false
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "page_errors": [],
+      "failed_http_statuses": [],
+      "layout": {
+        "viewport": 390,
+        "document": 390,
+        "portfolioY": 1450.421875,
+        "comparisonY": 1074.75,
+        "globalFocusOutlineSyntaxValid": false,
+        "topicFontSize": "11.5px",
+        "reducedMotion": true
+      },
+      "anchor_focus": {
+        "activeTag": "BODY",
+        "targetHasFocus": false,
+        "hashMatches": true
+      },
+      "portfolio_filter_dialog": "PASS",
+      "faq": "PASS",
+      "required_empty_validation": "PASS",
+      "stale_draft_reproduced": true,
+      "explicit_reprepare_updates_link": "PASS",
+      "whitespace_required_fields_accepted": true,
+      "external_telegram_link_clicked": false
+    },
+    {
+      "width": 430,
+      "height": 900,
+      "page_errors": [],
+      "failed_http_statuses": [],
+      "layout": {
+        "viewport": 430,
+        "document": 430,
+        "portfolioY": 1436.25,
+        "comparisonY": 1074.75,
+        "globalFocusOutlineSyntaxValid": false,
+        "topicFontSize": "11.5px",
+        "reducedMotion": true
+      },
+      "anchor_focus": {
+        "activeTag": "BODY",
+        "targetHasFocus": false,
+        "hashMatches": true
+      },
+      "portfolio_filter_dialog": "PASS",
+      "faq": "PASS",
+      "required_empty_validation": "PASS",
+      "stale_draft_reproduced": true,
+      "explicit_reprepare_updates_link": "PASS",
+      "whitespace_required_fields_accepted": true,
+      "external_telegram_link_clicked": false
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "page_errors": [],
+      "failed_http_statuses": [],
+      "layout": {
+        "viewport": 1440,
+        "document": 1440,
+        "portfolioY": 896.765625,
+        "comparisonY": 102,
+        "globalFocusOutlineSyntaxValid": false,
+        "topicFontSize": "11.5px",
+        "reducedMotion": true
+      },
+      "portfolio_filter_dialog": "PASS",
+      "faq": "PASS",
+      "required_empty_validation": "PASS",
+      "stale_draft_reproduced": true,
+      "explicit_reprepare_updates_link": "PASS",
+      "whitespace_required_fields_accepted": true,
+      "external_telegram_link_clicked": false
+    }
+  ],
+  "browser_version": "156.0.8078.79"
+}
