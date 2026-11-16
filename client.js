@@ -39,6 +39,7 @@ updateSelection();
 // Portfolio filtering, arrows, dots, finger swipe, and full-screen preview.
 const viewport=$("portfolio-viewport"),track=$("portfolio-track"),dots=$("portfolio-dots");
 const cards=[...track.querySelectorAll(".portfolio-slide")],prev=$("portfolio-prev"),next=$("portfolio-next");
+cards.forEach(card=>{card.setAttribute("aria-label",card.dataset.title+" — "+card.dataset.type);const caption=card.querySelector(".slide-visit");if(caption)caption.replaceChildren(document.createTextNode(card.dataset.title+" "),Object.assign(document.createElement("span"),{textContent:"↗",ariaHidden:"true"}))});
 let step=1,maxScroll=0,scrollTick=false;
 const visible=()=>cards.filter(c=>!c.hidden);
 function index(){return Math.max(0,Math.round(viewport.scrollLeft/step))}
@@ -95,10 +96,15 @@ form.addEventListener("change",()=>{errorBox.hidden=true});
 const EMAIL=/^[^@\s]+@[^@\s]+\.[^@\s]+$/,TELEGRAM=/^@[A-Za-z0-9_]{5,32}$/,TG_URL=/^https?:\/\/t\.me\/[A-Za-z0-9_]{5,32}\/?$/;
 function valid(){
  clearError();
- for(const input of form.querySelectorAll('input[required],select[required],textarea[required]')){
+ for(const input of form.querySelectorAll('input,select,textarea')){
+  if(!input.willValidate)continue;
+  if(input.required&&input.type!=="checkbox"&&input.type!=="radio"&&!input.value.trim()){
+   error("Заполните поле: "+(input.labels?.[0]?.textContent.replace("*","").trim()||"параметр"),input);return false;
+  }
+  if(input.maxLength>=0&&input.value.length>input.maxLength){error("Сократите текст до "+input.maxLength+" символов.",input);return false}
   if(!input.checkValidity()){
    const label=input.closest(".field")?.querySelector("label")?.textContent?.replace("*","").trim();
-   error(input===$("consent")?"Подтвердите согласие перед отправкой.":"Заполните обязательное поле: "+(label||"параметр"),input);return false;
+   error(input===$("consent")?"Подтвердите согласие перед отправкой.":(input.validity.valueMissing?"Заполните обязательное поле: ":"Проверьте значение поля: ")+(label||"параметр"),input);return false;
   }
  }
  const contact=val("contact").trim();
@@ -111,7 +117,7 @@ function valid(){
  const d=new Date();$("deadline").min=[d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");
 }
 function getData(){
- const d=Object.fromEntries(new FormData(form).entries());d.slides=Number(val("slides"));d.consent=$("consent").checked;d.speaker_notes=$("speaker_notes").checked;d.urgency=val("urgency");return d;
+ const d=Object.fromEntries(new FormData(form).entries());for(const key of Object.keys(d))if(typeof d[key]==="string")d[key]=d[key].trim();d.slides=Number(val("slides"));d.consent=$("consent").checked;d.speaker_notes=$("speaker_notes").checked;d.urgency=val("urgency");return d;
 }
 function makeBrief(d){
  return ["Здравствуйте! Хочу обсудить презентацию.","",
@@ -126,10 +132,12 @@ function makeBrief(d){
 }
 function success(title,text){
  $("success-heading").textContent=title;$("success-message").textContent=text;
- $("success").hidden=false;$("send").hidden=true;$("success").scrollIntoView({behavior:mode(),block:"nearest"});
+ $("success").hidden=false;$("send").hidden=true;
+ $("success-heading").tabIndex=-1;$("success-heading").focus({preventScroll:true});
+ $("success").scrollIntoView({behavior:"instant",block:"nearest"});
 }
 $("again").addEventListener("click",()=>{
- $("success").hidden=true;$("send").hidden=false;clearError();$("topic").focus({preventScroll:true});$("topic").scrollIntoView({behavior:mode(),block:"center"});
+ $("success").hidden=true;$("send").hidden=false;clearError();$("topic").focus({preventScroll:true});$("topic").scrollIntoView({behavior:"instant",block:"center"});
 });
 $("copy-brief").addEventListener("click",async()=>{
  try{await navigator.clipboard.writeText(lastBrief);$("copy-feedback").textContent="Текст скопирован. Вставьте его в Telegram и отправьте."}
@@ -146,8 +154,9 @@ form.addEventListener("submit",e=>{
  e.preventDefault();if(!valid())return;
  const data=getData();lastBrief=makeBrief(data);
  const link=$("telegram-send"),warning=$("copy-feedback");warning.textContent="";
- if(lastBrief.length>1600){link.href="https://t.me/"+RECIPIENT;warning.textContent="Бриф слишком длинный для ссылки. Скопируйте полный текст и отправьте его в чат."}
- else link.href="https://t.me/"+RECIPIENT+"?text="+encodeURIComponent(lastBrief);
+ const draftUrl="https://t.me/"+RECIPIENT+"?text="+encodeURIComponent(lastBrief);
+ if(draftUrl.length>8000){link.href="https://t.me/"+RECIPIENT;warning.textContent="Бриф слишком длинный для ссылки. Скопируйте полный текст и отправьте его в чат."}
+ else link.href=draftUrl;
  link.hidden=false;$("copy-brief").hidden=false;
  success("Бриф подготовлен","Откройте Telegram, проверьте сообщение и нажмите «Отправить». До этого момента исполнитель ничего не получает.");
 });
