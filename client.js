@@ -11,7 +11,13 @@ const labels={
 };
 const val=name=>form.elements.namedItem(name)?.value??"";
 const mode=()=>reduce.matches?"instant":"smooth";
-const scroll=id=>$(id)?.scrollIntoView({behavior:mode(),block:"start"});
+function navigate(id){
+ const section=$(id);
+ const target=section.querySelector("h1,h2")||section;
+ target.tabIndex=-1;
+ target.focus({preventScroll:true});
+ section.scrollIntoView({behavior:mode(),block:"start"});
+}
 const toggle=$("nav-toggle"),menu=$("mobile-nav");
 function closeMenu(){menu.hidden=true;toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Открыть меню")}
 toggle.addEventListener("click",()=>{
@@ -22,7 +28,8 @@ document.addEventListener("pointerdown",e=>{if(!menu.hidden&&!menu.contains(e.ta
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!menu.hidden){closeMenu();toggle.focus()}});
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{
  const id=a.getAttribute("href").slice(1);if(!$(id))return;
- e.preventDefault();closeMenu();scroll(id);history.replaceState(null,"","#"+id);
+ if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+ e.preventDefault();closeMenu();navigate(id);history.replaceState(null,"","#"+id);
 }));
 function updateSelection(){
  const selected=val("output");
@@ -32,7 +39,7 @@ function updateSelection(){
 }
 document.querySelectorAll("[data-choose-output]").forEach(b=>b.addEventListener("click",()=>{
  const input=form.querySelector('input[name="output"][value="'+b.dataset.chooseOutput+'"]');
- if(!input)return;input.checked=true;input.dispatchEvent(new Event("change",{bubbles:true}));scroll("brief");
+ if(!input)return;input.checked=true;input.dispatchEvent(new Event("change",{bubbles:true}));navigate("brief");
 }));
 form.querySelectorAll('input[name="output"]').forEach(input=>input.addEventListener("change",updateSelection));
 updateSelection();
@@ -42,7 +49,10 @@ const cards=[...track.querySelectorAll(".portfolio-slide")],prev=$("portfolio-pr
 cards.forEach(card=>{card.setAttribute("aria-label",card.dataset.title+" — "+card.dataset.type);const caption=card.querySelector(".slide-visit");if(caption)caption.replaceChildren(document.createTextNode(card.dataset.title+" "),Object.assign(document.createElement("span"),{textContent:"↗",ariaHidden:"true"}))});
 let step=1,maxScroll=0,scrollTick=false;
 const visible=()=>cards.filter(c=>!c.hidden);
-function index(){return Math.max(0,Math.round(viewport.scrollLeft/step))}
+function index(){
+ if(viewport.scrollLeft>=maxScroll-3)return Math.max(0,dots.children.length-1);
+ return Math.max(0,Math.round(viewport.scrollLeft/step));
+}
 function status(){
  prev.disabled=viewport.scrollLeft<3;next.disabled=viewport.scrollLeft>=maxScroll-3;
  [...dots.children].forEach((b,i)=>{const active=i===index();b.classList.toggle("active",active);b.setAttribute("aria-current",String(active))});
@@ -61,23 +71,37 @@ viewport.addEventListener("scroll",()=>{if(scrollTick)return;scrollTick=true;req
 const filters=[...document.querySelectorAll("[data-filter]")];
 function setFilter(name){
  filters.forEach(b=>{const active=b.dataset.filter===name;b.classList.toggle("is-active",active);b.setAttribute("aria-pressed",String(active))});
- cards.forEach(card=>card.hidden=name!=="all"&&!card.dataset.tags.split(" ").includes(name));
+ cards.forEach(card=>card.hidden=name!=="all"&&((name==="editable"||name==="image")?card.dataset.format!==name:!card.dataset.tags.split(" ").includes(name)));
+ if($("portfolio-empty"))$("portfolio-empty").hidden=visible().length>0;
  viewport.scrollTo({left:0,behavior:"instant"});requestAnimationFrame(measure);
 }
 filters.forEach(b=>b.addEventListener("click",()=>setFilter(b.dataset.filter)));
-$("portfolio-show-all").addEventListener("click",()=>{setFilter("all");scroll("portfolio")});
 window.addEventListener("resize",()=>requestAnimationFrame(measure),{passive:true});
 if("ResizeObserver" in window)new ResizeObserver(()=>requestAnimationFrame(measure)).observe(viewport);
 requestAnimationFrame(measure);
 const dialog=$("portfolio-dialog");
+let previewPages=[],previewIndex=0,previewCard=null;
+function showPreview(index){
+ previewIndex=Math.max(0,Math.min(previewPages.length-1,index));const page=previewPages[previewIndex];
+ $("dialog-image").src=page.src;$("dialog-image").alt=page.alt;
+ $("dialog-full").href=page.src;
+ $("dialog-page").textContent=(previewIndex+1)+" / "+previewPages.length;
+ $("dialog-prev").disabled=previewIndex===0;$("dialog-next").disabled=previewIndex===previewPages.length-1;
+}
 cards.forEach(card=>card.addEventListener("click",()=>{
- const image=card.querySelector("img");$("dialog-image").src=image.getAttribute("src");$("dialog-image").alt=image.alt;
+ const image=card.querySelector("img");previewCard=card;
+ previewPages=card.dataset.pages?JSON.parse(card.dataset.pages).map(p=>({src:"./"+p.src,alt:p.alt})):[{src:image.getAttribute("src"),alt:image.alt}];
  $("dialog-title").textContent=card.dataset.title;$("dialog-type").textContent=card.dataset.type;
+ $("dialog-paging").hidden=previewPages.length<2;showPreview(0);
+ for(const kind of ["pptx","pdf"]){const link=$("dialog-"+kind),file=card.dataset[kind];link.hidden=!file;if(file)link.href=file;else link.removeAttribute("href")}
  dialog.showModal();$("dialog-close").focus();
 }));
+$("dialog-prev").addEventListener("click",()=>showPreview(previewIndex-1));
+$("dialog-next").addEventListener("click",()=>showPreview(previewIndex+1));
+dialog.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();showPreview(previewIndex+(e.key==="ArrowLeft"?-1:1))}});
 $("dialog-close").addEventListener("click",()=>dialog.close());
 dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});
-dialog.addEventListener("close",()=>{$("dialog-image").removeAttribute("src")});
+dialog.addEventListener("close",()=>{$("dialog-image").removeAttribute("src");previewCard?.focus({preventScroll:true})});
 let lastBrief="";
 const errorBox=$("form-error");
 function clearError(){
@@ -148,8 +172,25 @@ $("copy-brief").addEventListener("click",async()=>{
 });
 
 const RECIPIENT="mm_bulgakov";
-$("intake-note").textContent="Бриф будет открыт в Telegram. Отправку необходимо подтвердить самостоятельно.";
-$("send").innerHTML='Продолжить в Telegram <span aria-hidden="true">→</span>';
+$("intake-note").textContent="Сайт подготовит бриф. Чтобы передать его, отправьте сообщение в Telegram.";
+$("send").innerHTML='Подготовить бриф <span aria-hidden="true">→</span>';
+function invalidateDraft(){
+ if($("success").hidden)return;
+ lastBrief="";
+ $("telegram-send").hidden=true;
+ $("telegram-send").removeAttribute("href");
+ $("copy-brief").hidden=true;
+ $("copy-feedback").textContent="";
+ $("success").hidden=true;
+ $("send").hidden=false;
+}
+form.addEventListener("input",invalidateDraft);
+form.addEventListener("change",invalidateDraft);
+$("again").addEventListener("click",()=>{
+ lastBrief="";
+ $("telegram-send").removeAttribute("href");
+ $("copy-feedback").textContent="";
+});
 form.addEventListener("submit",e=>{
  e.preventDefault();if(!valid())return;
  const data=getData();lastBrief=makeBrief(data);
@@ -160,3 +201,4 @@ form.addEventListener("submit",e=>{
  link.hidden=false;$("copy-brief").hidden=false;
  success("Бриф подготовлен","Откройте Telegram, проверьте сообщение и нажмите «Отправить». До этого момента исполнитель ничего не получает.");
 });
+$("send").disabled=false;

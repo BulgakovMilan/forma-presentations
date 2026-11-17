@@ -4,6 +4,7 @@ import hashlib
 import json
 import shutil
 import subprocess
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
@@ -14,6 +15,14 @@ ALLOWED = {
     "social-preview.jpg", "style.css", "cover-heart.webp", "cover-dna.webp",
     "cover-adaptation.webp", "cover-botany.webp", "cover-botany-detail.webp",
 }
+manifest = json.loads(Path(__file__).with_name("portfolio-assets.json").read_text(encoding="utf-8"))
+PORTFOLIO_HASHES = manifest["assets"]
+if manifest.get("schema_version") != 1 or not isinstance(PORTFOLIO_HASHES, dict):
+    raise RuntimeError("Invalid portfolio asset manifest")
+for name, digest in PORTFOLIO_HASHES.items():
+    if not re.fullmatch(r"demo-[a-z0-9-]+\.(webp|pptx|pdf)", name) or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+        raise RuntimeError("Unsafe portfolio asset binding")
+ALLOWED |= set(PORTFOLIO_HASHES)
 
 
 def package():
@@ -45,6 +54,8 @@ def package():
         source = ROOT / name
         if not source.is_file() or source.is_symlink():
             raise RuntimeError(f"Invalid source: {name}")
+        if name in PORTFOLIO_HASHES and hashlib.sha256(source.read_bytes()).hexdigest() != PORTFOLIO_HASHES[name]:
+            raise RuntimeError(f"Reviewed portfolio asset changed: {name}")
         target = OUTPUT / name
         if target.is_symlink():
             raise RuntimeError(f"Invalid output: {name}")
