@@ -92,6 +92,8 @@ cards.forEach(card=>card.addEventListener("click",()=>{
  const image=card.querySelector("img");previewCard=card;
  previewPages=card.dataset.pages?JSON.parse(card.dataset.pages).map(p=>({src:"./"+p.src,alt:p.alt})):[{src:image.getAttribute("src"),alt:image.alt}];
  $("dialog-title").textContent=card.dataset.title;$("dialog-type").textContent=card.dataset.type;
+ const summary=$("dialog-summary");
+ if(summary){summary.textContent=card.dataset.summary||"";summary.hidden=!summary.textContent;}
  $("dialog-paging").hidden=previewPages.length<2;showPreview(0);
  for(const kind of ["pptx","pdf"]){const link=$("dialog-"+kind),file=card.dataset[kind];link.hidden=!file;if(file)link.href=file;else link.removeAttribute("href")}
  dialog.showModal();$("dialog-close").focus();
@@ -99,6 +101,18 @@ cards.forEach(card=>card.addEventListener("click",()=>{
 $("dialog-prev").addEventListener("click",()=>showPreview(previewIndex-1));
 $("dialog-next").addEventListener("click",()=>showPreview(previewIndex+1));
 dialog.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();showPreview(previewIndex+(e.key==="ArrowLeft"?-1:1))}});
+const previewImage=$("dialog-image");
+let swipeStart=null;
+previewImage.addEventListener("pointerdown",e=>{
+ if(e.pointerType==="touch"&&e.isPrimary)swipeStart={id:e.pointerId,x:e.clientX,y:e.clientY};
+},{passive:true});
+previewImage.addEventListener("pointercancel",()=>{swipeStart=null;},{passive:true});
+previewImage.addEventListener("pointerup",e=>{
+ if(!swipeStart||e.pointerId!==swipeStart.id)return;
+ const dx=e.clientX-swipeStart.x,dy=e.clientY-swipeStart.y;
+ swipeStart=null;
+ if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5)showPreview(previewIndex+(dx<0?1:-1));
+},{passive:true});
 $("dialog-close").addEventListener("click",()=>dialog.close());
 dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close()});
 dialog.addEventListener("close",()=>{$("dialog-image").removeAttribute("src");previewCard?.focus({preventScroll:true})});

@@ -513,3 +513,8 @@ body{background:var(--bg);font-size:16px;line-height:1.6}
  .brief-format{margin-bottom:12px}
  .extra-options summary{padding:12px}
 }
+
+#dialog-image{touch-action:pan-y pinch-zoom}
+.dialog-summary{font-size:.875rem;line-height:1.5;color:var(--muted);margin:4px 0 10px}
+.dialog-summary[hidden]{display:none}
+@media (max-height:520px) and (orientation:landscape){#dialog-image{max-height:34vh;object-fit:contain}.dialog-paging{margin-top:6px}}
